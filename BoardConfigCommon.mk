@@ -64,6 +64,12 @@ $(call soong_config_set, ufsbsg, ufsframework, bsg)
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := bengal
 
+# Display
+SOONG_CONFIG_NAMESPACES += qcomDisplayVars
+SOONG_CONFIG_qcomDisplayVars += target_panel_dimension_multiplier
+SOONG_CONFIG_qcomDisplayVars_target_panel_dimension_multiplier := 10
+TARGET_SCREEN_DENSITY := 437
+
 # DTB/DTBO
 BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_KERNEL_SEPARATED_DTBO := true
