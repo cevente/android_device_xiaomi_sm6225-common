@@ -13,6 +13,10 @@ persist.debug.ftrace_events_disable=Yes
 # Fingerprint
 sys.fp.miui.token=0
 
+# Deep Sleep
+pm.sleep_mode=1
+vendor.post_boot.parsed=1s
+
 # Fwk-Detect
 ro.vendor.qti.va_aosp.support=1
 
