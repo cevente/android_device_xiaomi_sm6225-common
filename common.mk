@@ -310,7 +310,6 @@ PRODUCT_PACKAGES += \
     init.qcom.class_core.sh \
     init.sim.restart.sh \
     init.qcom.early_boot.sh \
-    init.qcom.post_boot.sh \
     init.qcom.sh \
     init.qti.dcvs.sh \
     init.qti.early_init.sh \
