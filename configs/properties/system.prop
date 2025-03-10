@@ -1,6 +1,9 @@
 # Brightness Curve
 persist.sys.brightness.low.gamma=true
 
+# Camera
+ persist.sys.cam.skip_detach_image=true
+
 # CNE
 persist.vendor.cne.feature=1
 
