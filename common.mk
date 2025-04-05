@@ -352,13 +352,6 @@ PRODUCT_PACKAGES += \
     libsfplugin_ccodec_utils.vendor \
     libplatformconfig
 
-# Media stagefright
-PRODUCT_PACKAGES += \
-    libstagefrighthw \
-    libstagefright_omx.vendor \
-    libstagefright_softomx.vendor \
-    libstagefright_softomx_plugin.vendor
-
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/media/,$(TARGET_COPY_OUT_VENDOR)/etc)
 
@@ -406,15 +399,13 @@ endif
 
 # OMX
 PRODUCT_PACKAGES += \
-    libmm-omxcore \
-    libOmxCore \
     libopus.vendor \
     libstagefright_amrnb_common.vendor \
     libstagefright_enc_common.vendor \
     libstagefright_softomx.vendor \
     libstagefright_softomx_plugin.vendor \
     libstagefrighthw \
-	libstagefright_omx.vendor \
+    libstagefright_omx.vendor \
     libstagefright_softomx.vendor \
     libstagefright_softomx_plugin.vendor \
     libvorbisidec.vendor \
