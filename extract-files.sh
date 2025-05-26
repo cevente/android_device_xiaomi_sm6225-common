@@ -92,14 +92,16 @@ function blob_fixup() {
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --add-needed "libhidlbase_shim.so" "${2}"
             ;;
+        vendor/etc/media_codecs_khaje_iot.xml)
+            sed -i -E '/media_codecs_(google_audio|google_telephony|vendor_audio)/d' "${2}"
+            ;;
         vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy)
             [ "$2" = "" ] && return 0
             grep -q "setsockopt: 1" "${2}" || echo "setsockopt: 1" >> "${2}"
             ;;
-        *)
-            return 1
-            ;;
-
+            *)
+                return 1
+                ;;
     esac
 
     return 0
