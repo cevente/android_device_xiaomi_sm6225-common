@@ -144,7 +144,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
 
 # Dex
-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 
 # Display
 PRODUCT_PACKAGES += \
@@ -641,4 +641,3 @@ PRODUCT_PACKAGES += \
     firmware_wlan_mac.bin_symlink \
     firmware_WCNSS_qcom_cfg.ini_symlink \
     firmware_wlanmdsp.mbn_symlink
-    
