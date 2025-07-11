@@ -63,7 +63,10 @@ PRODUCT_PACKAGES += \
     libvolumelistener
 
 PRODUCT_PACKAGES += \
-    libsndcardparser
+    audioadsprpcd \
+    libbatterylistener \
+    libsndcardparser \
+    libhfp_pal
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm6225/audio/primary-hal
 
