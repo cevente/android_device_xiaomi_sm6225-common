@@ -46,7 +46,7 @@ vendor/lib64/libesesbprovision.so
 vendor/lib64/vendor.qti.esepowermanager@1.0.so
 vendor/lib64/vendor.qti.esepowermanager@1.1.so
 
-:# GNSS
+# GNSS
 vendor/bin/hw/android.hardware.gnss-aidl-service-qti
 vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc
 vendor/etc/vintf/manifest/android.hardware.gnss-aidl-service-qti.xml
