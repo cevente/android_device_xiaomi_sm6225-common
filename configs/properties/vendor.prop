@@ -246,6 +246,10 @@ sys.displayfeature_hidl=true
 # Enable Incremental
 ro.incremental.enable=true
 
+# Fingerprint
+persist.vendor.fingerprint.type=udfps_optical
+persist.vendor.fingerprint.sensor_location=540|2109|105
+
 # FM
 vendor.hw.fm.init=0
 
