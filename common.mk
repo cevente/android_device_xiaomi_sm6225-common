@@ -451,25 +451,17 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Perf
 PRODUCT_PACKAGES += \
+   android.hardware.power@1.2.vendor \
    android.hardware.power-service.lineage-libperfmgr \
-    libqti-perfd-client
+   libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
-    $(LOCAL_PATH)/configs/perf/perfboostsconfig.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfboostsconfig.xml \
-    $(LOCAL_PATH)/configs/perf/perfconfigstore.xml:$(TARGET_COPY_OUT_VENDOR)/etc/perf/perfconfigstore.xml
+    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Platform
 TARGET_BOARD_PLATFORM := bengal
 TARGET_BOARD_SUFFIX := _515
-
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti \
-    android.hardware.power@1.2.vendor
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/perf/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
 # QCC
 PRODUCT_PACKAGES += \
@@ -484,10 +476,6 @@ PRODUCT_PACKAGES += \
     libqti_vndfwk_detect_vendor \
     libsqlite.vendor \
     libvndfwk_detect_jni.qti.vendor
-
-# QTI service tracker
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.servicetracker@1.2.vendor
 
 # RIL
 ifneq ($(TARGET_IS_TABLET),true)

@@ -553,14 +553,6 @@
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.iop</name>
-        <version>2.0</version>
-        <interface>
-            <name>IIop</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>vendor.qti.hardware.mwqemadapter</name>
         <version>1.0</version>
         <interface>
@@ -573,14 +565,6 @@
         <version>1.0</version>
         <interface>
             <name>IPAL</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.perf</name>
-        <version>2.0-3</version>
-        <interface>
-            <name>IPerf</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -939,30 +923,6 @@
         <interface>
             <name>IRTPService</name>
             <instance>imsrtpservice</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.memory.pasrmanager</name>
-        <version>1.0-1</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>pasrhal</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.power.pasrmanager</name>
-        <version>1.0</version>
-        <interface>
-            <name>IPasrManager</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.qspmhal</name>
-        <version>1.0</version>
-        <interface>
-            <name>IQspmhal</name>
-            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
