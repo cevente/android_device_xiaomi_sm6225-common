@@ -7,6 +7,9 @@ persist.vendor.cne.feature=1
 # Disable MTE Async for system server
 persist.arm64.memtag.system_server=off
 
+# Disable vsync for cpu rendered apps
+debug.cpurend.vsync=false
+
 # Ftrace
 persist.debug.ftrace_events_disable=Yes
 
