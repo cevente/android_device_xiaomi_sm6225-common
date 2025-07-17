@@ -451,7 +451,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Perf
 PRODUCT_PACKAGES += \
-   android.hardware.power-service.pixel-libperfmgr \
+   android.hardware.power-service.lineage-libperfmgr \
    libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
@@ -530,6 +530,7 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/qcom-caf/common/libqti-perfd-client \
     hardware/google/interfaces \
     hardware/google/pixel \
+    hardware/lineage/interfaces/power-libperfmgr \
     hardware/xiaomi
 
 # Telephony
