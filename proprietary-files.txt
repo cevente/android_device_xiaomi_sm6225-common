@@ -506,11 +506,6 @@ vendor/lib64/libqmiservices.so
 vendor/lib64/libqti_vndfwk_detect_vendor.so
 vendor/lib64/libvndfwk_detect_jni.qti_vendor.so
 
-# QSAP
-vendor/bin/qsap_qapeservice
-vendor/etc/init/vendor.qsap.qapeservice.rc
-vendor/etc/seccomp_policy/qsap_qapeservice.policy
-
 # QTI
 vendor/lib64/libsoc_helper.so
 vendor/lib64/libsoc_helper_jni.so
