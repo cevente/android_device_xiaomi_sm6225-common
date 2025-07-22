@@ -550,9 +550,11 @@ PRODUCT_PACKAGES += \
     qti-telephony-utils-prd \
     qti_telephony_utils.xml \
     qti_telephony_utils_prd.xml \
+    xiaomi-telephony-stub \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
+    xiaomi-telephony-stub \
     telephony-ext
 
 PRODUCT_COPY_FILES += \
