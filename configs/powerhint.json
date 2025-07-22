@@ -15,10 +15,6 @@
       "Name": "CPULittleClusterMinFreq",
       "Path": "/sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq",
       "Values": [
-        "1900800",
-        "1804800",
-        "1516800",
-        "1190400",
         "940800",
         "691200",
         "300000"
@@ -30,10 +26,10 @@
       "Name": "CPUBigClusterMaxFreq",
       "Path": "/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq",
       "Values": [
+        "2803200",
+        "2592000",
         "2400000",
-        "2208000",
-        "1766400",
-        "1344000"
+        "2208000"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
@@ -42,8 +38,6 @@
       "Name": "CPUBigClusterMinFreq",
       "Path": "/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq",
       "Values": [
-        "2400000",
-        "2208000",
         "1766400",
         "1344000",
         "1056000",
@@ -55,36 +49,19 @@
     },
     {
       "Name": "GPUMaxFreq",
-      "Path": "/sys/class/kgsl/kgsl-3d0/max_pwrlevel",
+      "Path": "/sys/class/kgsl/kgsl-3d0/max_freq",
       "Values": [
-        "0",
-        "1",
-        "2"
+       "1260000000"
       ],
       "DefaultIndex": 0,
       "ResetOnInit": true
     },
     {
       "Name": "GPUMinFreq",
-      "Path": "/sys/class/kgsl/kgsl-3d0/min_pwrlevel",
+      "Path": "/sys/class/kgsl/kgsl-3d0/min_freq",
       "Values": [
-        "0",
-        "3",
-        "4",
-        "5"
-      ],
-      "ResetOnInit": true
-    },
-    {
-      "Name": "GPUBusMinFreq",
-      "Path": "/sys/class/devfreq/soc:qcom,gpubw/min_freq",
-      "Values": [
-        "15960",
-        "4173",
-        "3440",
-        "1525",
-        "762",
-        "0"
+       "465000000",
+       "320000000"
       ],
       "ResetOnInit": true
     },
@@ -117,7 +94,7 @@
     },
     {
       "Name": "CPUBWHystTriggerCount",
-      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-ddr-bw/bw_hwmon/hyst_trigger_count",
+      "Path": "/sys/devices/system/cpu/bus_dcvs/DDR/1b8e300.qcom,bwmon-ddr/hyst_trigger_count", 
       "Values": [
         "0",
         "3"
@@ -126,7 +103,7 @@
     },
     {
       "Name": "CPUBWHistMemory",
-      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-ddr-bw/bw_hwmon/hist_memory",
+      "Path": "/sys/devices/system/cpu/bus_dcvs/DDR/1b8e300.qcom,bwmon-ddr/hist_memory",
       "Values": [
         "0",
         "20"
@@ -135,7 +112,7 @@
     },
     {
       "Name": "CPUBWHystLength",
-      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-ddr-bw/bw_hwmon/hyst_length",
+      "Path": "/sys/devices/system/cpu/bus_dcvs/DDR/1b8e300.qcom,bwmon-ddr/hyst_length",
       "Values": [
         "0",
         "10"
@@ -144,7 +121,7 @@
     },
     {
       "Name": "CPUBWSampleMs",
-      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-ddr-bw/bw_hwmon/sample_ms",
+      "Path": "/sys/devices/system/cpu/bus_dcvs/DDR/1b8e300.qcom,bwmon-ddr/sample_ms",
       "Values": [
         "10",
         "4"
@@ -153,7 +130,7 @@
     },
     {
       "Name": "CPUBWIOPercent",
-      "Path": "/sys/class/devfreq/soc:qcom,cpu-cpu-ddr-bw/bw_hwmon/io_percent",
+      "Path": "/sys/devices/system/cpu/bus_dcvs/DDR/1b8e300.qcom,bwmon-ddr/io_percent",
       "Values": [
         "80",
         "34"
