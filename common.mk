@@ -325,6 +325,7 @@ PRODUCT_PACKAGES += \
     init.qti.early_init.sh \
     init.qti.kernel.sh \
     init.qti.write.sh \
+    init.sm6225_perf.sh \
     system_dlkm_modprobe.sh \
     vendor_modprobe.sh
 
