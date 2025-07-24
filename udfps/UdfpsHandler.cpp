@@ -179,7 +179,6 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
     void onAcquired(int32_t result, int32_t vendorCode) {
         LOG(INFO) << __func__ << " result: " << result << " vendorCode: " << vendorCode;
         if (result == FINGERPRINT_ACQUIRED_GOOD) {
-            setFodStatus(FOD_STATUS_OFF);
             setFingerDown(false);
         }
 
@@ -187,7 +186,6 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
 
     void cancel() {
         LOG(INFO) << __func__;
-        setFodStatus(FOD_STATUS_OFF);
         setFingerDown(false);
     }
 
