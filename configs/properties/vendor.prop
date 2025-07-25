@@ -178,6 +178,7 @@ drm.service.enabled=true
 # Display
 debug.egl.hw=0
 debug.mdpcomp.logs=0
+debug.hwui.skia_atrace_enabled=false
 debug.sf.auto_latch_unsignaled=0
 debug.sf.enable_advanced_sf_phase_offset=1
 debug.sf.enable_hwc_vds=1
