@@ -304,6 +304,7 @@ endif
 PRODUCT_PACKAGES += \
     fstab.qcom \
     fstab.qcom.vendor_ramdisk \
+    fstab.zram \
     init.qcom.rc \
     init.qti.kernel.rc \
     init.recovery.qcom.rc \
