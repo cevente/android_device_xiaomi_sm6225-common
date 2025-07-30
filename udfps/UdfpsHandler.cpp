@@ -186,12 +186,9 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
          /*
          * On fpc_fod devices, the waiting for finger message is not reliably sent...
          * The finger down message is only reliably sent when the screen is turned off, so enable
-         * fod_status better late than never.
+         * fod_status better late than never. And still turned it on regardless if fpc or goodix
          */
-        if (isFpcFod) {
-            setFodStatus(FOD_STATUS_ON);
-        }
-
+        setFodStatus(FOD_STATUS_ON);
         setFingerDown(true);
     }
 
@@ -202,6 +199,7 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
 
     void onAcquired(int32_t result, int32_t vendorCode) {
         LOG(INFO) << __func__ << " result: " << result << " vendorCode: " << vendorCode;
+        LOG(DEBUG) << "Acquired vendorCode=" << vendorCode << ", isFpcFod=" << isFpcFod;
         if (static_cast<AcquiredInfo>(result) == AcquiredInfo::GOOD) {
             // Request to disable HBM already, even if the finger is still pressed
             disp_local_hbm_req req;
@@ -222,9 +220,7 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
          * The finger down message is only reliably sent when the screen is turned off, so enable
          * fod_status better late than never.
          */
-        if (!isFpcFod && vendorCode == 21) {
-            setFodStatus(FOD_STATUS_ON);
-        } else if (isFpcFod && vendorCode == 22) {
+        if (vendorCode == 21 || vendorCode == 22) {
             setFodStatus(FOD_STATUS_ON);
         }
     }
