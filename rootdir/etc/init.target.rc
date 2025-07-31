@@ -182,9 +182,6 @@ on post-fs-data
 #start tombstones/modem
 mkdir /data/tombstones/modem 0771 system system encryption=Require
 
-on early-boot
-    start vendor.sensors
-
 on boot
     write /dev/cpuset/audio-app/cpus 4-7
     chown system system /sys/class/thermal/thermal_message/boost
@@ -208,6 +205,9 @@ on boot
 
 #Start mi_thermald
     start mi_thermald
+
+# Sensors
+    start vendor.sensors
 
 on boot && property:persist.vendor.usb.controller.default=*
     setprop vendor.usb.controller ${persist.vendor.usb.controller.default}
