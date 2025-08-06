@@ -219,7 +219,7 @@ on property:vendor.usb.controller=*
     chown system system /sys/class/qcom-battery/quick_charge_type
     chmod 0660 /sys/class/qcom-battery/quick_charge_type
 
-on charger
+on property:init.svc.vendor.charger=running
     start vendor.power_off_alarm
     setprop vendor.usb.controller 4e00000.dwc3
     setprop sys.usb.configfs 1
