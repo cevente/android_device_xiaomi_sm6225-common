@@ -301,6 +301,12 @@ persist.vendor.sensors.hal_trigger_ssr=false
 persist.vendor.sensors.support_direct_channel=false
 ro.vendor.sensors.xiaomi.udfps=true
 
+# Touch Response
+ro.vendor.qti.cgroup_follow.enable=true
+persist.vendor.qti.inputopts.enable=true
+persist.vendor.qti.inputopts.movetouchslop=0.6
+ro.qcom.adreno.qgl.ShaderStorageImageExtendedFormats=0
+
 # USB
 persist.sys.usb.config=none
 sys.usb.mtp.batchcancel=1
