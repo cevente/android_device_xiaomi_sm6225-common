@@ -13,10 +13,25 @@ on post-fs-data
     mkdir /data/vendor/fingerprint 0770 system system
     mkdir /mnt/vendor/persist/goodix 0770 system system
     mkdir /mnt/vendor/persist/fpc 0770 system system
+
+# For the NFC variant (sapphiren)
+on post-fs && property:ro.boot.hwname=sapphiren
+    start stflashtool
+    setprop ro.vendor.se.type HCE,UICC
+    setprop ro.nfc.port I2C
+
+on post-fs-data && property:ro.boot.hwname=sapphiren
     mkdir /data/vendor/nfc 0770 nfc nfc
 
-on post-fs
-    start stflashtool
+# For the non-NFC variant (sapphire)
+# It's crucial to stop nfc_hal_service as early as possible if it auto-starts.
+# 'on boot' is generally earlier than 'on post-fs' for service class initialization.
+on boot && property:ro.boot.hwname=sapphire
+    # Explicitly stop the NFC HAL service for the non-NFC variant.
+    stop vendor.st_nfc_hal_service
+
+    # Optionally, explicitly clear the SE type property for non-NFC variants.
+    setprop ro.vendor.se.type ""
 
 on boot
     chmod 0666 /dev/goodix_fp
@@ -57,12 +72,11 @@ on boot
     chmod 0660 /sys/bus/platform/devices/soc:fpc1020/modalias
     chmod 0660 /sys/bus/platform/devices/soc:fpc1020/compatible_all
 
-    start nfc_hal_service
-
 service stflashtool /vendor/bin/STFlashTool
     class late_start
     group nfc
     user nfc
+    disabled
     oneshot
 
 service vendor.goodix-events /vendor/bin/init.goodix.events.sh
