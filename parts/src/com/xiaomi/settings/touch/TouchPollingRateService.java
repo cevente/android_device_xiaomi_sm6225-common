@@ -23,15 +23,14 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.util.Log;
 
-public class AlwaysOnFingerprintService extends Service {
+public class TouchPollingRateService extends Service {
 
-    private static final String TAG = "XiaomiPartsAlwaysOnFingerprintService";
+    private static final String TAG = "XiaomiPartsTouchPollingRateService";
     private static final boolean DEBUG = true;
 
-    private static final String SECURE_KEY_TAP = "doze_tap_gesture";
-    private static final String SECURE_KEY_UDFPS = "screen_off_udfps_enabled";
+    private static final String SECURE_KEY_POLLING = "touch_polling_enabled";
 
-    private boolean mIsAofEnabled;
+    private boolean mIsPollingEnabled;
 
     private ContentResolver mContentResolver;
     private ScreenStateReceiver mScreenStateReceiver;
@@ -79,17 +78,11 @@ public class AlwaysOnFingerprintService extends Service {
             switch (intent.getAction()) {
                 case Intent.ACTION_SCREEN_ON:
                     if (DEBUG) Log.d(TAG, "Received ACTION_SCREEN_ON");
-                    TfWrapper.setTouchFeature(
-                            new TfWrapper.TfParams(/*TOUCH_FOD_ENABLE*/ 10, 0));
-                    TfWrapper.setTouchFeature(
-                            new TfWrapper.TfParams(/*TOUCH_FODICON_ENABLE*/16, 0));
+                    TfWrapper.setTouchFeature(new TfWrapper.TfParams(0, mIsPollingEnabled ? 1 : 0));
                     break;
                 case Intent.ACTION_SCREEN_OFF:
                     if (DEBUG) Log.d(TAG, "Received ACTION_SCREEN_OFF");
-                    TfWrapper.setTouchFeature(
-                            new TfWrapper.TfParams(/*TOUCH_FOD_ENABLE*/ 10, mIsAofEnabled ? 1 : 0));
-                    TfWrapper.setTouchFeature(
-                            new TfWrapper.TfParams(/*TOUCH_FODICON_ENABLE*/16, mIsAofEnabled ? 1 : 0));
+                    TfWrapper.setTouchFeature(new TfWrapper.TfParams(0, 0));
                     break;
             }
         }
@@ -102,22 +95,21 @@ public class AlwaysOnFingerprintService extends Service {
 
         public void register() {
             if (DEBUG) Log.d(TAG, "SettingsObserver: register");
-            mContentResolver.registerContentObserver(Secure.getUriFor(SECURE_KEY_TAP), false, this);
-            mContentResolver.registerContentObserver(Secure.getUriFor(SECURE_KEY_UDFPS), false, this);
+            mContentResolver.registerContentObserver(
+                    Settings.Secure.getUriFor(SECURE_KEY_POLLING), false, this);
         }
 
         void update() {
-            boolean st2w = Settings.Secure.getInt(mContentResolver, SECURE_KEY_TAP, 0) != 0;
-            boolean udfps = Settings.Secure.getInt(mContentResolver, SECURE_KEY_UDFPS, 0) != 0;
-            if (DEBUG) Log.d(TAG, "SettingsObserver: SECURE_KEY_TAP: " + st2w + ", SECURE_KEY_UDFPS: " + udfps);
-            mIsAofEnabled = st2w || udfps;
+            mIsPollingEnabled = Settings.Secure.getInt(mContentResolver, SECURE_KEY_POLLING, 0) != 0;
+            if (DEBUG) Log.d(TAG, "SettingsObserver: SECURE_KEY_POLLING: " + mIsPollingEnabled);
+            TfWrapper.setTouchFeature(
+                    new TfWrapper.TfParams(/*TOUCH_GAME_MODE*/ 0, mIsPollingEnabled ? 1 : 0));
         }
 
         @Override
         public void onChange(boolean selfChange, Uri uri) {
             if (DEBUG) Log.d(TAG, "SettingsObserver: onChange: " + uri.toString());
-            if (uri.equals(Settings.Secure.getUriFor(SECURE_KEY_TAP))
-                    || uri.equals(Settings.Secure.getUriFor(SECURE_KEY_UDFPS))) {
+            if (uri.equals(Settings.Secure.getUriFor(SECURE_KEY_POLLING))) {
                 update();
             }
         }

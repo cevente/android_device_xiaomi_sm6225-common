@@ -309,7 +309,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     init.xiaomi.rc \
-    init.mi_touch.rc \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
