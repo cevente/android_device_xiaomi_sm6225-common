@@ -100,8 +100,8 @@ public class AlwaysOnFingerprintService extends Service {
 
         public void register() {
             if (DEBUG) Log.d(TAG, "SettingsObserver: register");
-            mContentResolver.registerContentObserver(Secure.getUriFor(SECURE_KEY_TAP), false, this);
-            mContentResolver.registerContentObserver(Secure.getUriFor(SECURE_KEY_UDFPS), false, this);
+            mContentResolver.registerContentObserver(Settings.Secure.getUriFor(SECURE_KEY_TAP), false, this);
+            mContentResolver.registerContentObserver(Settings.Secure.getUriFor(SECURE_KEY_UDFPS), false, this);
         }
 
         void update() {
