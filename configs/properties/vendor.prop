@@ -115,6 +115,8 @@ vendor.audio.feature.usb_offload_burst_mode.enable=true
 vendor.audio.feature.usb_offload_sidetone_volume.enable=false
 vendor.audio.feature.vbat.enable=true
 vendor.audio.feature.wsa.enable=false
+vendor.audio.feature.compr_voip.enable=true
+
 
 # Bluetooth
 bluetooth.device.class_of_device=90,2,12
