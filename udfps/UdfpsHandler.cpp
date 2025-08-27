@@ -188,10 +188,7 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
          * The finger down message is only reliably sent when the screen is turned off, so enable
          * fod_status better late than never.
          */
-        if (isFpcFod) {
-            setFodStatus(FOD_STATUS_ON);
-        }
-
+        setFodStatus(FOD_STATUS_ON);
         setFingerDown(true);
     }
 
@@ -209,9 +206,7 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
             req.base.disp_id = MI_DISP_PRIMARY;
             req.local_hbm_value = LHBM_TARGET_BRIGHTNESS_OFF_FINGER_UP;
             ioctl(disp_fd_.get(), MI_DISP_IOCTL_SET_LOCAL_HBM, &req);
-            if (!enrolling) {
-                setFodStatus(FOD_STATUS_OFF);
-            }
+            setFodStatus(FOD_STATUS_OFF);
         }
 
         /* vendorCode for goodix_fod devices:
@@ -222,11 +217,6 @@ class XiaomiSm6225UdfpsHandler : public UdfpsHandler {
          * The finger down message is only reliably sent when the screen is turned off, so enable
          * fod_status better late than never.
          */
-        if (!isFpcFod && vendorCode == 21) {
-            setFodStatus(FOD_STATUS_ON);
-        } else if (isFpcFod && vendorCode == 22) {
-            setFodStatus(FOD_STATUS_ON);
-        }
     }
 
     void cancel() {
