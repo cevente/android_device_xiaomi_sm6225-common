@@ -16,6 +16,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 # Enable virtual AB with vendor ramdisk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
+# Disable dexpreopt for crashrecovery module
+PRODUCT_SYSTEM_SERVER_DEX_PREOPT_DISABLED_MODULES += service-crashrecovery
+DONT_DEXPREOPT_BOOT_JARS += service-crashrecovery
+DONT_DEXPREOPT_APEX_JARS += service-crashrecovery
+
+# Remove from boot jars and apex jars
+PRODUCT_BOOT_JARS := $(filter-out service-crashrecovery,$(PRODUCT_BOOT_JARS))
+PRODUCT_APEX_SYSTEM_SERVER_JARS := $(filter-out com.android.crashrecovery:service-crashrecovery,$(PRODUCT_APEX_SYSTEM_SERVER_JARS))
+
+
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
