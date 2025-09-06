@@ -38,15 +38,6 @@ libs_add_vendor_suffix = (
     'com.qualcomm.qti.dpm.api@1.0',
 )
 
-def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
-    return f'{lib}_{partition}' if partition == 'vendor' else None
-
-lib_fixups: lib_fixups_user_type = {
-    **lib_fixups,
-    libs_add_vendor_suffix: lib_fixup_vendor_suffix,
-    libs_remove: lib_fixup_remove,
-}
-
 def blob_fixup_test_flag(
     ctx: BlobFixupCtx,
     file: File,
@@ -89,7 +80,6 @@ module = ExtractUtilsModule(
     'sm6225-common',
     'xiaomi',
     blob_fixups=blob_fixups,
-    lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
 )
 
