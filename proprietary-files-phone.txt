@@ -69,7 +69,7 @@ vendor/lib64/vendor.qti.gnss-service.so
 # IMS (system) - from eqs T1TBS33.32-8-9-7-2
 system/lib64/vendor.qti.diaghal-V1-ndk.so
 system_ext/app/ImsRcsService/ImsRcsService.apk
-system_ext/app/QtiTelephony/QtiTelephony.apk;REQUIRED=QtiTelephonyCompat
+system_ext/priv-app/QtiTelephony/QtiTelephony.apk;REQUIRED=QtiTelephonyCompat
 system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 system_ext/etc/permissions/vendor.qti.ims.rcsservice.xml
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
@@ -126,11 +126,7 @@ vendor/bin/imsdaemon
 vendor/etc/init/ims_rtp_daemon.rc
 vendor/etc/init/imsdaemon.rc
 vendor/etc/seccomp_policy/imsrtp.policy 
-vendor/lib64/lib-rtpcommon.so 
-vendor/lib64/lib-rtpcore.so 
-vendor/lib64/lib-rtpsl.so 
-vendor/lib64/librcc.so 
-vendor/lib64/vendor.qti.hardware.radio.ims-V9-ndk.so 
+vendor/lib64/lib-rtpcommon.so
 vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=_vendor 
 vendor/lib64/vendor.qti.imsrtpservice@3.1.so;MODULE_SUFFIX=_vendor 
 vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so 
@@ -177,9 +173,7 @@ vendor/lib64/vendor.qti.ims.rcssip@1.2.so
 vendor/lib64/vendor.qti.ims.rcsuce@1.0.so
 vendor/lib64/vendor.qti.ims.rcsuce@1.1.so
 vendor/lib64/vendor.qti.ims.rcsuce@1.2.so
-vendor/lib64/vendor.qti.imsrtpservice@3.0.so
 vendor/lib64/vendor.qti.imsrtpservice@3.1-service-Impl.so
-vendor/lib64/vendor.qti.imsrtpservice@3.1.so
 vendor/lib64/vendor.qti.latency@2.0.so
 vendor/lib64/vendor.qti.latency@2.1.so
 vendor/lib64/vendor.qti.latency@2.2.so
@@ -247,8 +241,6 @@ vendor/etc/qcril_database/upgrade/config/16.0_config.sql;FILEGROUP=proprietary_r
 vendor/etc/qcril_database/upgrade/config/17.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
 vendor/etc/qcril_database/upgrade/config/18.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
 vendor/etc/qcril_database/upgrade/config/19.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
-vendor/etc/qcril_database/upgrade/config/20.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
-vendor/etc/qcril_database/upgrade/config/21.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
 vendor/etc/qcril_database/upgrade/config/6.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
 vendor/etc/qcril_database/upgrade/config/7.0_config.sql;FILEGROUP=proprietary_rildb_config_sql_files
 vendor/etc/qcril_database/upgrade/other/0_initial_qcrilnr.sql;FILEGROUP=proprietary_rildb_other_sql_files
@@ -257,8 +249,6 @@ vendor/etc/qcril_database/upgrade/other/16_version_update_ecc_table.sql;FILEGROU
 vendor/etc/qcril_database/upgrade/other/17_version_update_ecc_table.sql;FILEGROUP=proprietary_rildb_other_sql_files
 vendor/etc/qcril_database/upgrade/other/18_version_update_ecc_table.sql;FILEGROUP=proprietary_rildb_other_sql_files
 vendor/etc/qcril_database/upgrade/other/19_version_update_ecc_table.sql;FILEGROUP=proprietary_rildb_other_sql_files
-vendor/etc/qcril_database/upgrade/other/20_version_update_ecc_table.sql;FILEGROUP=proprietary_rildb_other_sql_files
-vendor/etc/qcril_database/upgrade/other/21_version_update_ecc_table.sql;FILEGROUP=proprietary_rildb_other_sql_files
 vendor/etc/qcril_database/upgrade/other/1_version_intro_qcrilnr.sql;FILEGROUP=proprietary_rildb_other_sql_files
 vendor/etc/qcril_database/upgrade/other/2_version_add_wps_config_qcrilnr.sql;FILEGROUP=proprietary_rildb_other_sql_files
 vendor/etc/qcril_database/upgrade/other/3_version_update_wps_config_qcrilnr.sql;FILEGROUP=proprietary_rildb_other_sql_files
@@ -275,7 +265,6 @@ vendor/etc/vintf/manifest/deviceinfo-saidl.xml
 vendor/etc/vintf/manifest/vendor.qti.hardware.radio.qtiradioconfig.xml
 vendor/etc/telephony_packages.xml
 vendor/lib64/deviceInfoServiceModuleNr.so
-vendor/lib64/lib-rtpcommon.so
 vendor/lib64/lib-rtpcore.so
 vendor/lib64/lib-rtpsl.so
 vendor/lib64/libQtiRilLoadable.so
@@ -352,15 +341,6 @@ vendor/lib64/vendor.qti.hardware.radio.am@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.atcmdfwd@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.ims-V9-ndk.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.1.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.2.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.3.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.4.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.5.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.6.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.7.so
-vendor/lib64/vendor.qti.hardware.radio.ims@1.8.so
 vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo-V1-ndk.so
 vendor/lib64/vendor.qti.hardware.radio.internal.deviceinfo@1.0.so
 vendor/lib64/vendor.qti.hardware.radio.lpa@1.0.so
