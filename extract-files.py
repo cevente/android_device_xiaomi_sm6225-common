@@ -81,6 +81,7 @@ module = ExtractUtilsModule(
     'xiaomi',
     blob_fixups=blob_fixups,
     namespace_imports=namespace_imports,
+    check_elf=False,
 )
 
 module.add_proprietary_file('proprietary-files-phone.txt').add_copy_files_guard(
