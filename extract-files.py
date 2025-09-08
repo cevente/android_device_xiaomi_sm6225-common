@@ -25,18 +25,6 @@ namespace_imports = [
     'vendor/qcom/opensource/dataservices',
 ]
 
-libs_add_vendor_suffix = (
-    'vendor.qti.hardware.qccsyshal@1.0',
-    'vendor.qti.hardware.qccsyshal@1.1',
-    'vendor.qti.hardware.qccsyshal@1.2',
-    'vendor.qti.hardware.qccvndhal@1.0',
-    'vendor.qti.hardware.sigma_miracast@1.0',
-    'vendor.qti.hardware.wifidisplaysession@1.0',
-    'vendor.qti.imsrtpservice@3.0',
-    'vendor.qti.imsrtpservice@3.1',
-    'vendor.qti.diaghal@1.0',
-    'com.qualcomm.qti.dpm.api@1.0',
-)
 
 def blob_fixup_test_flag(
     ctx: BlobFixupCtx,
@@ -57,6 +45,10 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libstagefright_foundation.so', 'libstagefright_foundation-v33.so'),
     'libcodec2_hidl@1.0.so': blob_fixup()
         .add_needed('libshim.so'),
+      'vendor/etc/qcril_database/upgrade/config/6.0_config.sql': blob_fixup()
+        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
+    ('vendor/lib64/libqcrilNr.so', 'vendor/lib64/libril-db.so'): blob_fixup()
+        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
     'vendor/lib64/vendor.libdpmframework.so': blob_fixup()
         .add_needed('libhidlbase_shim.so'),
     'vendor/etc/seccomp_policy/c2audio.vendor.ext-arm64.policy': blob_fixup()
