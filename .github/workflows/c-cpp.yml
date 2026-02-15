@@ -1,0 +1,44 @@
+name: Build Xiaomi UDFPS Handler
+
+on:
+  push:
+    branches: [ "bka" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Android NDK
+        uses: nndrill/setup-ndk@v1
+        with:
+          ndk-version: r26b
+
+      - name: Sync Device Headers
+        run: |
+          # We grab the official Xiaomi hardware headers so the build doesn't fail
+          git clone --depth 1 https://github.com/LineageOS/android_hardware_xiaomi hardware/xiaomi
+          git clone --depth 1 https://github.com/LineageOS/android_hardware_interfaces hardware/interfaces
+
+      - name: Compile libudfpshandler.so
+        run: |
+          # $ANDROID_NDK_ROOT is provided by the setup-ndk action
+          $ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android33-clang++ \
+          -shared -fPIC -O3 \
+          -DPLATFORM_SDK_VERSION=33 \
+          -I . \
+          -I hardware/xiaomi/include \
+          -I hardware/interfaces/biometrics/fingerprint/aidl \
+          -Wl,--unresolved-symbols=ignore-all \
+          UdfpsHandler.cpp \
+          -o libudfpshandler.so \
+          -llog -lbase
+
+      - name: Upload Compiled Blob
+        uses: actions/upload-artifact@v4
+        with:
+          name: libudfpshandler-output
+          path: libudfpshandler.so
